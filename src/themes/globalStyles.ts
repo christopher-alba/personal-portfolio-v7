@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 200;
   }
   body {
+    user-select: none;
     overflow-x:hidden;
     background: ${({ theme }) => theme.colors.primary2};
     color: ${({ theme }) => theme.colors.secondary1} !important;
@@ -34,4 +35,22 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Inter", Helvetica, sans-serif;
     text-transform: capitalize;
   }
+  @media (max-width: 600px){
+    h1 {
+      font-size: 1.5rem;
+    }
+    h2 {
+      font-size: 1.3rem;
+    }
+    h3 {
+      font-size: 1.1rem;
+    }
+    h4 {
+      font-size: 1.0rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+  }
+  
 `;

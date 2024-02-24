@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Career from "./pages/Career";
 import Projects from "./pages/Projects";
+import { FooterMain } from "./components/Footer/styled";
+import Footer from "./components/Footer/Footer";
 
 const VanishingArea = styled("div")`
   height: 50px;
@@ -42,6 +44,7 @@ const App = () => {
         <Route path="/projects" element={<Projects />} />
       </Routes>
       <VanishingArea />
+      <Footer />
     </ThemeProvider>
   );
 };

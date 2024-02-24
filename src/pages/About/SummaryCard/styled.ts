@@ -1,12 +1,12 @@
 import styled from "styled-components";
 type MainDivProps = {
-  inverted: boolean;
+  $inverted: boolean;
 };
 export const MainDiv = styled("div")<MainDivProps>`
-  background: ${({ theme, inverted }) =>
-    inverted ? theme.colors.primary1 : theme.colors.secondary1};
-  color: ${({ theme, inverted }) =>
-    !inverted ? theme.colors.primary1 : theme.colors.secondary1};
+  background: ${({ theme, $inverted }) =>
+    $inverted ? theme.colors.primary1 : theme.colors.secondary1};
+  color: ${({ theme, $inverted }) =>
+    !$inverted ? theme.colors.primary1 : theme.colors.secondary1};
   width: 300px;
   display: inline-block;
   border-radius: 15px;

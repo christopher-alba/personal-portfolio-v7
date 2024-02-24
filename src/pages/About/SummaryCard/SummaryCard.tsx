@@ -9,14 +9,14 @@ const SummaryCard: FC<{
   inverted: boolean;
 }> = ({ topLabel, mainTexts, mainTitle, subTitles, inverted }) => {
   return (
-    <MainDiv inverted={inverted} className="carouselItem">
+    <MainDiv $inverted={inverted} className="carouselItem">
       <h3>{topLabel}</h3>
       <h2>{mainTitle}</h2>
-      {subTitles.map((x) => (
-        <h4>{x}</h4>
+      {subTitles.map((x, index) => (
+        <h4 key={index}>{x}</h4>
       ))}
-      {mainTexts.map((x) => (
-        <p>{x}</p>
+      {mainTexts.map((x, index) => (
+        <p key={index}>{x}</p>
       ))}
     </MainDiv>
   );

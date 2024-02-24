@@ -28,8 +28,8 @@ const HeroArea: FC<{
             {pageTitle}
             <PageTitlePeriod>.</PageTitlePeriod>
           </PageTitle>
-          {pageSubTitles.map((x) => (
-            <PageSubTitle>{x}</PageSubTitle>
+          {pageSubTitles.map((x, index) => (
+            <PageSubTitle key={index}>{x}</PageSubTitle>
           ))}
           <IconWrapper>
             <StyledLink

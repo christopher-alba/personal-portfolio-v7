@@ -36,7 +36,6 @@ const Carousel: FC<{
     const boundsRight =
       -container.getBoundingClientRect().right +
       lastItem.getBoundingClientRect().right;
-    console.log(boundsRight);
 
     setBoundsRight(boundsRight);
   }, []);
