@@ -2,6 +2,9 @@ import { FC } from "react";
 import HeroArea from "../../components/HeroArea";
 import SubTitle from "../../components/SubTitle";
 import { Container } from "../../components/Container";
+import Carousel from "../../components/Carousel/Carousel";
+import summaryData from "./summaryData";
+import SummaryCard from "./SummaryCard";
 
 const About: FC = () => {
   return (
@@ -15,12 +18,22 @@ const About: FC = () => {
         ]}
         imageUrl="./images/grad-photo-web.png"
       />
-      <Container>
+      <Container className="aboutContainer">
         <SubTitle
           mainText="Summary Cards"
           description="Learn some interesting things about me"
-          style={{ marginTop: "150px" }}
         />
+        <Carousel relativeContainerName="aboutContainer">
+          {summaryData.map((x, index) => (
+            <SummaryCard
+              inverted={index % 2 === 0}
+              mainTexts={x.mainTexts}
+              mainTitle={x.mainTitle}
+              subTitles={x.subTitles}
+              topLabel={x.topLabel}
+            ></SummaryCard>
+          ))}
+        </Carousel>
       </Container>
     </div>
   );
