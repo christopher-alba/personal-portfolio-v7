@@ -18,16 +18,17 @@ const NavLinks: FC = () => {
     setXPos(xPos + "px");
   };
   useEffect(() => {
-    switch (location.pathname) {
-      case "/":
-        applyStylesToUnderline("aboutLink");
-        break;
-      case "/career":
-        applyStylesToUnderline("careerLink");
-        break;
-      case "/projects":
-        applyStylesToUnderline("projectsLink");
-        break;
+    if (location.pathname.includes("projects")) {
+      applyStylesToUnderline("projectsLink");
+    } else {
+      switch (location.pathname) {
+        case "/":
+          applyStylesToUnderline("aboutLink");
+          break;
+        case "/career":
+          applyStylesToUnderline("careerLink");
+          break;
+      }
     }
   }, [location, windowWidth]);
   return (
