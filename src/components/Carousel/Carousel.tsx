@@ -1,18 +1,14 @@
 import {
   FC,
-  MouseEvent,
   ReactNode,
   useContext,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import {
   CarouselSingle,
   Circle,
-  ControlButton,
   ControlButtons,
-  Controls,
   MainDiv,
 } from "./styled";
 import Draggable from "react-draggable";

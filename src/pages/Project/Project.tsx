@@ -1,18 +1,13 @@
 import { FC, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Project as ProjectType, projects } from "../Projects/data";
 import { Container } from "../../components/Container";
 import {
   Anchor,
   ButtonsWrapper,
   ContentWrapper,
-  Facebook,
-  Github,
   GithubButton,
-  IconWrapper,
   ImageWrapper,
-  Instagram,
-  LinkedIn,
   MainBackgroundDiv,
   Overlay,
   PageSubTitle,
@@ -20,7 +15,6 @@ import {
   PageTitlePeriod,
   Pill,
   PillsWrapper,
-  StyledLink,
   StyledRouterLink,
   TechPill,
 } from "./styled";
