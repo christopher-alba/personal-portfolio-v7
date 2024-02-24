@@ -53,6 +53,7 @@ export const ImageWrapper = styled("div")`
   position: absolute;
   right: 0;
   width: 25vw;
+  height: 70%;
   @media (max-width: 600px) {
     position: static;
     width: 90%;

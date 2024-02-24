@@ -5,6 +5,7 @@ import { GlobalStyles } from "./themes/globalStyles";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
+import Career from "./pages/Career";
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -24,6 +25,7 @@ const App = () => {
       <Navbar setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<About />} />
+        <Route path="/career" element={<Career />} />
       </Routes>
     </ThemeProvider>
   );
