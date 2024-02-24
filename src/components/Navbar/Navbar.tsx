@@ -34,7 +34,7 @@ const Navbar: FC<{ setTheme: (theme: DefaultTheme) => void }> = ({
     setDisplayMenu(!displayMenu);
   };
   return (
-    <div style={{ position: "sticky", top: 0 }}>
+    <div style={{ position: "sticky", top: 0, zIndex: 1000 }}>
       <MainDiv>
         <Container
           style={{
@@ -45,7 +45,10 @@ const Navbar: FC<{ setTheme: (theme: DefaultTheme) => void }> = ({
           }}
         >
           <PrimaryDiv>
-            <Brand>Christopher <span style={{color: theme?.colors.tertiary1}}>Alba</span></Brand>
+            <Brand>
+              Christopher{" "}
+              <span style={{ color: theme?.colors.tertiary1 }}>Alba</span>
+            </Brand>
             <NavLinks />
           </PrimaryDiv>
           <SecondaryDiv>

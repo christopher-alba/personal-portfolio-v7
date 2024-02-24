@@ -4,6 +4,7 @@ import themes from "./themes/schema.json";
 import { GlobalStyles } from "./themes/globalStyles";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import About from "./pages/About";
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -20,9 +21,9 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Navbar setTheme={setTheme}/>
+      <Navbar setTheme={setTheme} />
       <Routes>
-        <Route path="/" element />
+        <Route path="/" element={<About />} />
       </Routes>
     </ThemeProvider>
   );
