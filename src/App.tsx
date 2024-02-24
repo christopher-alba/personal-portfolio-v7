@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import themes from "./themes/schema.json";
 import { GlobalStyles } from "./themes/globalStyles";
 import { Route, Routes } from "react-router-dom";
@@ -7,6 +7,18 @@ import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Career from "./pages/Career";
 import Projects from "./pages/Projects";
+
+const VanishingArea = styled("div")`
+  height: 50px;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+  background: linear-gradient(
+    0deg,
+    ${({ theme }) => theme.colors.primary2} 0%,
+    rgba(0, 212, 255, 0) 100%
+  );
+`;
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -29,6 +41,7 @@ const App = () => {
         <Route path="/career" element={<Career />} />
         <Route path="/projects" element={<Projects />} />
       </Routes>
+      <VanishingArea />
     </ThemeProvider>
   );
 };

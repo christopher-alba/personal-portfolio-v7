@@ -1,5 +1,7 @@
 import { FC } from "react";
 import HeroArea from "../../components/HeroArea";
+import SubTitle from "../../components/SubTitle";
+import { Container } from "../../components/Container";
 
 const About: FC = () => {
   return (
@@ -13,6 +15,13 @@ const About: FC = () => {
         ]}
         imageUrl="./images/grad-photo-web.png"
       />
+      <Container>
+        <SubTitle
+          mainText="Summary Cards"
+          description="Learn some interesting things about me"
+          style={{ marginTop: "150px" }}
+        />
+      </Container>
     </div>
   );
 };
