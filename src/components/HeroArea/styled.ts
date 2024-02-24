@@ -32,6 +32,8 @@ export const PageSubTitle = styled("h3")`
   color: ${({ theme }) => theme.colors.secondary3 + "69"};
   margin: 3px 0;
   font-size: 1.5rem;
+  position: relative;
+  z-index: 2;
   @media (max-width: 600px) {
     text-align: center;
     font-size: 1rem;

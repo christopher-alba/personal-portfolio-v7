@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Career from "./pages/Career";
+import Projects from "./pages/Projects";
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -26,6 +27,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<About />} />
         <Route path="/career" element={<Career />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
     </ThemeProvider>
   );

@@ -8,7 +8,7 @@ const Career: FC = () => {
         pageTitle="Career"
         pageSubTitles={[
           "Learn where I started off.",
-          "Find out where I am now",
+          "Find out where I am now.",
           "Its been a great journey so far.",
         ]}
         imageUrl="./images/grad-photo-web-2.png"

@@ -9,7 +9,7 @@ export const MainDiv = styled("div")`
   display: flex;
   align-items: center;
   width: 100%;
-  margin: 0;
+  margin-bottom: 20px;
 `;
 type NavLinkProps = {
   isActive: boolean;
