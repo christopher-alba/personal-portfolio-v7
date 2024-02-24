@@ -23,6 +23,7 @@ enum Devices {
 
 export type Project = {
   name: string;
+  short: string;
   description: string;
   status: ProjectStatus[];
   type: Type;
@@ -43,6 +44,7 @@ type Projects = Project[];
 export const projects: Projects = [
   {
     name: "Valkyrion",
+    short: "Top down shooter build in Unity C#.",
     description:
       "This is a top-down 3D shooter with WASD controls and left click to shoot. Very easy to play once you get use to it. I had plenty of features planned for this game and even planned a full release on steam mid 2023. However, I found myself not enoying it anymore and figured that it was no longer worth putting hours of work into each day. Hence, it's now available freely for the public!",
     status: [ProjectStatus.FEATURED, ProjectStatus.ARCHIVED],
@@ -62,6 +64,7 @@ export const projects: Projects = [
   },
   {
     name: "2D Space Shooter",
+    short: "Top down shooter built in raw Javascript, HTML, and CSS.",
     description:
       "Fight your way through infinite rounds and enemies in this classic style shooter.",
     status: [ProjectStatus.FEATURED, ProjectStatus.ARCHIVED],
@@ -80,6 +83,7 @@ export const projects: Projects = [
   },
   {
     name: "Scientific Calculator",
+    short: "Calculator built in raw Javascript, HTML, and CSS.",
     description:
       "Has the basic functionalities of a calculator as well as some extra features!",
     status: [ProjectStatus.FEATURED, ProjectStatus.ARCHIVED],
@@ -98,7 +102,8 @@ export const projects: Projects = [
   },
   {
     name: "PVP Chess",
-    description: "A working chess game with computer assists.",
+    short: "A working chess game with computer assists.",
+    description: "",
     status: [ProjectStatus.FEATURED, ProjectStatus.ARCHIVED],
     type: Type.UNIVERSITY,
     website: "https://christopher-alba.github.io/chess/",
@@ -115,7 +120,8 @@ export const projects: Projects = [
   },
   {
     name: "Whack-a-mole",
-    description: "Click on the moles as they appear to earn points!",
+    short: "Click on the moles as they appear to earn points!",
+    description: "",
     status: [ProjectStatus.FEATURED, ProjectStatus.ARCHIVED],
     type: Type.UNIVERSITY,
     website:
@@ -133,6 +139,7 @@ export const projects: Projects = [
   },
   {
     name: "E-CommerceV5",
+    short: "A simple ecommerce website.",
     description:
       "This is a small scale ecommerce site that allows users to browse products and add them to a shopping cart. Admins can create, update, and delete products in the shop route. To access an admin account, login using username: admin, and password: admin. This site also features a light mode theme and dark mode theme, controlled by a switch.",
     status: [ProjectStatus.FEATURED, ProjectStatus.ARCHIVED],
@@ -151,7 +158,7 @@ export const projects: Projects = [
       "Other React Libraries",
     ],
     devices: [Devices.DESKTOP, Devices.TABLET, Devices.MOBILE],
-    imgSrc: "./images/ecommercev5.png",
+    imgSrc: "/images/ecommercev5.png",
     year: 2021,
     github: [
       {
@@ -166,6 +173,7 @@ export const projects: Projects = [
   },
   {
     name: "Financial Manager",
+    short: "A software tool to help you manage your finances.",
     description:
       "Manage your finances by tracking expenses, incomes, and goals. Login using username: username | password: password",
     website: "https://betterfinance.netlify.app/",
@@ -185,7 +193,7 @@ export const projects: Projects = [
     status: [ProjectStatus.FEATURED, ProjectStatus.ARCHIVED],
     devices: [Devices.DESKTOP, Devices.TABLET, Devices.MOBILE],
     type: Type.UNIVERSITY,
-    imgSrc: "./images/finance.png",
+    imgSrc: "/images/finance.png",
     year: 2022,
     github: [
       {
@@ -200,6 +208,7 @@ export const projects: Projects = [
   },
   {
     name: "Unirant",
+    short: "A simple blog like website.",
     description:
       "A website for university students to rant about their life. Register an account with Unirant or log in with your google account to interact with the website's basic features.",
     website: "https://unirant.netlify.app/",
@@ -216,7 +225,7 @@ export const projects: Projects = [
       "MongoDB Atlas",
       "Mongoose",
     ],
-    imgSrc: "./images/unirant.png",
+    imgSrc: "/images/unirant.png",
     status: [ProjectStatus.UNDERCONSTRUCTION, ProjectStatus.FEATURED],
     devices: [Devices.DESKTOP, Devices.TABLET, Devices.MOBILE],
     type: Type.UNIVERSITY,

@@ -1,6 +1,28 @@
 import { FC, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Project as ProjectType, projects } from "../Projects/data";
+import { Container } from "../../components/Container";
+import {
+  Anchor,
+  ButtonsWrapper,
+  ContentWrapper,
+  Facebook,
+  Github,
+  GithubButton,
+  IconWrapper,
+  ImageWrapper,
+  Instagram,
+  LinkedIn,
+  MainBackgroundDiv,
+  Overlay,
+  PageSubTitle,
+  PageTitle,
+  PageTitlePeriod,
+  Pill,
+  PillsWrapper,
+  StyledLink,
+  TechPill,
+} from "./styled";
 
 const Project: FC = () => {
   const [state, setState] = useState<ProjectType>();
@@ -20,7 +42,51 @@ const Project: FC = () => {
     }
   }, [location]);
 
-  return <div>{state?.name}</div>;
+  return (
+    <div>
+      <MainBackgroundDiv>
+        <Container>
+          <ContentWrapper>
+            <PageTitle>
+              {state?.name}
+              <PageTitlePeriod>.</PageTitlePeriod>
+            </PageTitle>
+
+            <PageSubTitle>{state?.short}</PageSubTitle>
+            <p>{state?.description}</p>
+            <ButtonsWrapper>
+              {state?.download ? (
+                <Anchor href={state.download}>Download</Anchor>
+              ) : (
+                <Anchor href={state?.website}>Visit </Anchor>
+              )}
+
+              {state?.github.map((x) => (
+                <GithubButton href={x.url}>Github - {x.type}</GithubButton>
+              ))}
+            </ButtonsWrapper>
+            <PillsWrapper style={{ marginTop: "50px" }}>
+              {state?.devices.map((x) => (
+                <Pill>{x}</Pill>
+              ))}
+            </PillsWrapper>
+            <PillsWrapper style={{ marginTop: "50px" }}>
+              {state?.tags.map((x) => (
+                <TechPill>{x}</TechPill>
+              ))}
+            </PillsWrapper>
+          </ContentWrapper>
+        </Container>
+        <ImageWrapper>
+          <Overlay />
+          <img
+            src={state?.imgSrc}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        </ImageWrapper>
+      </MainBackgroundDiv>
+    </div>
+  );
 };
 
 export default Project;
