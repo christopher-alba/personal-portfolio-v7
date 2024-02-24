@@ -3,6 +3,7 @@ import FacebookIcon from "../../assets/facebookIcon.svg?react";
 import InstagramIcon from "../../assets/instagramIcon.svg?react";
 import GithubIcon from "../../assets/githubIcon.svg?react";
 import LinkedInIcon from "../../assets/linkedinIcon.svg?react";
+import { Link } from "react-router-dom";
 
 export const MainBackgroundDiv = styled("div")`
   background: ${({ theme }) => theme.colors.primary1};
@@ -178,4 +179,12 @@ export const TechPill = styled("div")`
   background-color: ${({ theme }) => theme.colors.primary2};
   margin-right: 10px;
   margin-top: 10px;
+`;
+
+export const StyledRouterLink = styled(Link)`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.secondary1};
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
 `;

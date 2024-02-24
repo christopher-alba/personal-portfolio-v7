@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Project as ProjectType, projects } from "../Projects/data";
 import { Container } from "../../components/Container";
 import {
@@ -21,6 +21,7 @@ import {
   Pill,
   PillsWrapper,
   StyledLink,
+  StyledRouterLink,
   TechPill,
 } from "./styled";
 
@@ -29,24 +30,50 @@ const Project: FC = () => {
   const location = useLocation();
   useEffect(() => {
     if (!location.state) {
-      setState(
-        projects.filter((x) => {
-          return (
-            x.name.replaceAll(" ", "").toLowerCase() ===
-            location.pathname.split("/")[2].replaceAll(" ", "").toLowerCase()
-          );
-        })[0]
-      );
+      var project = projects.filter((x) => {
+        return (
+          x.name.replaceAll(" ", "").toLowerCase() ===
+          location.pathname.split("/")[2].replaceAll(" ", "").toLowerCase()
+        );
+      })[0];
+      setState(project);
     } else {
       setState(location.state);
     }
   }, [location]);
 
+  if (!state) {
+    return (
+      <MainBackgroundDiv>
+        <Container>
+          <ContentWrapper>
+            <PageTitle>
+              404 Not Found
+              <PageTitlePeriod>.</PageTitlePeriod>
+            </PageTitle>
+
+            <PageSubTitle>
+              The project with the name{" "}
+              "{location.pathname.split("/")[2].replaceAll(" ", "")}" could not be found.
+            </PageSubTitle>
+          </ContentWrapper>
+        </Container>
+        <ImageWrapper>
+          <Overlay />
+          <img
+            src="/images/grad-photo-web.png"
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+          />
+        </ImageWrapper>
+      </MainBackgroundDiv>
+    );
+  }
   return (
     <div>
       <MainBackgroundDiv>
         <Container>
           <ContentWrapper>
+            <StyledRouterLink to="/projects">← Back to projects</StyledRouterLink>
             <PageTitle>
               {state?.name}
               <PageTitlePeriod>.</PageTitlePeriod>
