@@ -6,6 +6,10 @@ const StyledTitle = styled("h2")`
   @media (max-width: 600px) {
     font-size: calc(2rem * 0.5);
   }
+  @media (max-width: 600px) {
+    margin-top: 50px;
+  }
+  margin-top: 150px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.secondary1};
 `;
