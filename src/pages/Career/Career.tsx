@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect } from "react";
 import HeroArea from "../../components/HeroArea";
 import SubTitle from "../../components/SubTitle";
 import { Container } from "../../components/Container";
@@ -8,6 +8,10 @@ import { ThemeContext } from "styled-components";
 
 const Career: FC = () => {
   const theme = useContext(ThemeContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <HeroArea

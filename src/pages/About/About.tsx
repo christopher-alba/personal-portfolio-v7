@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import HeroArea from "../../components/HeroArea";
 import SubTitle from "../../components/SubTitle";
 import { Container } from "../../components/Container";
@@ -16,6 +16,10 @@ import {
 import techData, { Type } from "./techData";
 
 const About: FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <HeroArea

@@ -35,6 +35,10 @@ const Project: FC = () => {
       setState(location.state);
     }
   }, [location]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   if (!state) {
     return (
