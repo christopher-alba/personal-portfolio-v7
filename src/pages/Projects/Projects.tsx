@@ -2,11 +2,12 @@ import { FC, useEffect } from "react";
 import HeroArea from "../../components/HeroArea";
 import SubTitle from "../../components/SubTitle";
 import { Container } from "../../components/Container";
-import { Type, projects } from "./data";
+import { Project, Type } from "./data";
 import { Link } from "react-router-dom";
 import { Image, ImageDiv, ImagesWrapper, Overlay } from "./styled";
+import { Entry } from "contentful";
 
-const Projects: FC = () => {
+const Projects: FC<{ contentful?: Entry }> = (contentful) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,7 +20,10 @@ const Projects: FC = () => {
           "Most of these were done during university.",
           "A showcase of my skills through hobby development.",
         ]}
-        imageUrl="./images/projects.png"
+        imageUrl={
+          (contentful.contentful?.fields.projectsImage as any)?.fields?.file
+            ?.url
+        }
       />
       <Container>
         <SubTitle
@@ -27,25 +31,22 @@ const Projects: FC = () => {
           description="Projects outside the curriculum"
         />
         <ImagesWrapper>
-        {projects
-          .filter((x) => x.type === Type.UNIVERSITY)
-          .map((x) => (
-            <ImageDiv>
-              <Link
-                to={{ pathname: `/projects/${x.name.replaceAll(" ", "")}` }}
-                state={x}
-                style={{display: "block"}}
-              >
-                <Overlay>
-                  {x.name}
-                </Overlay>
-              </Link>
+          {(contentful?.contentful?.fields?.projects as Project[])
+            .filter((x) => x.type === Type.UNIVERSITY)
+            .map((x) => (
+              <ImageDiv>
+                <Link
+                  to={{ pathname: `/projects/${x.name.replaceAll(" ", "")}` }}
+                  state={x}
+                  style={{ display: "block" }}
+                >
+                  <Overlay>{x.name}</Overlay>
+                </Link>
                 <Image src={x.imgSrc} />
-            </ImageDiv>
-          ))}
-      </ImagesWrapper>
+              </ImageDiv>
+            ))}
+        </ImagesWrapper>
       </Container>
-      
     </div>
   );
 };

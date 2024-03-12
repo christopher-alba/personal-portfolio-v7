@@ -3,7 +3,7 @@ import HeroArea from "../../components/HeroArea";
 import SubTitle from "../../components/SubTitle";
 import { Container } from "../../components/Container";
 import Carousel from "../../components/Carousel/Carousel";
-import summaryData from "./summaryData";
+import { SummaryData } from "./summaryData";
 import SummaryCard from "./SummaryCard";
 import {
   Card,
@@ -13,9 +13,10 @@ import {
   TechWrapperMain,
   TertiaryPeriod,
 } from "./styled";
-import techData, { Type } from "./techData";
+import { Tech, Type } from "./techData";
+import { Entry } from "contentful";
 
-const About: FC = () => {
+const About: FC<{ contentful?: Entry }> = (contentful) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -29,7 +30,9 @@ const About: FC = () => {
           "Learn what I’m good at.",
           "Decide if I fit your culture.",
         ]}
-        imageUrl="./images/grad-photo-web.png"
+        imageUrl={
+          (contentful.contentful?.fields.aboutImage as any)?.fields?.file?.url
+        }
       />
       <Container className="aboutContainer">
         <SubTitle
@@ -37,16 +40,18 @@ const About: FC = () => {
           description="Learn some interesting things about me"
         />
         <Carousel relativeContainerName="aboutContainer">
-          {summaryData.map((x, index) => (
-            <SummaryCard
-              key={index}
-              inverted={index % 2 === 0}
-              mainTexts={x.mainTexts}
-              mainTitle={x.mainTitle}
-              subTitles={x.subTitles}
-              topLabel={x.topLabel}
-            ></SummaryCard>
-          ))}
+          {(contentful?.contentful?.fields?.summaryCards as SummaryData[])?.map(
+            (x, index) => (
+              <SummaryCard
+                key={index}
+                inverted={index % 2 === 0}
+                mainTexts={x.mainTexts}
+                mainTitle={x.mainTitle}
+                subTitles={x.subTitles}
+                topLabel={x.topLabel}
+              ></SummaryCard>
+            )
+          )}
         </Carousel>
         <SubTitle
           mainText="Technologies"
@@ -58,7 +63,7 @@ const About: FC = () => {
               For Work<TertiaryPeriod>.</TertiaryPeriod>
             </SmallTitle>
             <PillsWrapper>
-              {techData
+              {(contentful?.contentful?.fields?.technologies as Tech[])
                 .filter((x) => x.type === Type.WORK)
                 .sort()
                 .map((x) => (
@@ -71,7 +76,7 @@ const About: FC = () => {
               As a Hobby<TertiaryPeriod>.</TertiaryPeriod>
             </SmallTitle>
             <PillsWrapper>
-              {techData
+              {(contentful?.contentful?.fields?.technologies as Tech[])
                 .filter((x) => x.type === Type.HOBBY)
                 .sort()
                 .map((x) => (

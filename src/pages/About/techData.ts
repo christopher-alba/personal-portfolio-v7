@@ -1,6 +1,6 @@
 export enum Type {
-  WORK,
-  HOBBY,
+  WORK = "WORK",
+  HOBBY = "HOBBY",
 }
 export type Tech = {
   name: string;

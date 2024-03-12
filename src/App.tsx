@@ -9,6 +9,8 @@ import Career from "./pages/Career";
 import Projects from "./pages/Projects";
 import Footer from "./components/Footer/Footer";
 import Project from "./pages/Project/Project";
+import { client } from "./main";
+import { Entry } from "contentful";
 
 const VanishingArea = styled("div")`
   height: 50px;
@@ -28,20 +30,31 @@ const App = () => {
       ? JSON.parse(localStorage.getItem("theme") as string)
       : themes.light
   );
+  const [contentful, setContentful] = useState<Entry>();
 
   useEffect(() => {
     if (!localStorage.getItem("theme")) {
       localStorage.setItem("theme", JSON.stringify(themes.light));
     }
+    client
+      .getEntry("65AeUYg4df2Hwani5B8h6g")
+      .then((entry) => {
+        console.log(entry);
+        setContentful(entry);
+      })
+      .catch(console.error);
   }, []);
+
+  if(!contentful) return;
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Navbar setTheme={setTheme} />
+      <Navbar setTheme={setTheme} contentful={contentful}/>
       <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="/career" element={<Career />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/" element={<About contentful={contentful} />} />
+        <Route path="/career" element={<Career contentful={contentful}/>} />
+        <Route path="/projects" element={<Projects contentful={contentful}/>} />
         <Route path="/projects/:projectName" element={<Project />} />
       </Routes>
       <VanishingArea />

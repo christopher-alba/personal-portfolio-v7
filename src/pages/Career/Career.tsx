@@ -2,11 +2,12 @@ import { FC, useContext, useEffect } from "react";
 import HeroArea from "../../components/HeroArea";
 import SubTitle from "../../components/SubTitle";
 import { Container } from "../../components/Container";
-import { data } from "./data";
+import { Companies } from "./data";
 import { Card, CardInverted, CardsWrapper } from "./styled";
 import { ThemeContext } from "styled-components";
+import { Entry } from "contentful";
 
-const Career: FC = () => {
+const Career: FC<{ contentful?: Entry }> = (contentful) => {
   const theme = useContext(ThemeContext);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,7 +22,9 @@ const Career: FC = () => {
           "Find out where I am now.",
           "Its been a great journey so far.",
         ]}
-        imageUrl="./images/grad-photo-web-2.png"
+        imageUrl={
+          (contentful.contentful?.fields.careerImage as any)?.fields?.file?.url
+        }
       />
       <Container>
         <SubTitle
@@ -29,7 +32,7 @@ const Career: FC = () => {
           description="Where I continuously learn about developing scaling software"
         />
         <CardsWrapper>
-          {data
+          {(contentful?.contentful?.fields?.career as Companies)
             .filter((x) => x.type === "Work")
             .map((x) => (
               <Card>
@@ -53,7 +56,7 @@ const Career: FC = () => {
           description="Where I first learned about production grade software"
         />
         <CardsWrapper>
-          {data
+          {(contentful?.contentful?.fields?.career as Companies)
             .filter((x) => x.type === "Internship")
             .map((x) => (
               <CardInverted>

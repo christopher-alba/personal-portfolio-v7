@@ -5,8 +5,8 @@ export enum ProjectStatus {
   SERVERNOLONGERDEPLOYED = "serverNoLongerDeployed",
 }
 export enum Type {
-  UNIVERSITY,
-  WORK,
+  UNIVERSITY = "UNIVERSITY",
+  WORK = "WORK",
 }
 enum ProjectType {
   MONOREPO = "Monorepo",

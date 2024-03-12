@@ -15,10 +15,12 @@ import { DefaultTheme, ThemeContext } from "styled-components";
 import themes from "../../themes/schema.json";
 import NavLinks from "./NavLinks";
 import NavLinksVertical from "./NavLinksVertical";
+import { Entry } from "contentful";
 
-const Navbar: FC<{ setTheme: (theme: DefaultTheme) => void }> = ({
-  setTheme,
-}) => {
+const Navbar: FC<{
+  setTheme: (theme: DefaultTheme) => void;
+  contentful: Entry;
+}> = ({ contentful, setTheme }) => {
   const [displayMenu, setDisplayMenu] = useState(false);
   const theme = useContext(ThemeContext);
   const toggleTheme = () => {
@@ -52,7 +54,11 @@ const Navbar: FC<{ setTheme: (theme: DefaultTheme) => void }> = ({
             <NavLinks />
           </PrimaryDiv>
           <SecondaryDiv>
-            <ResumeButton to="cv.pdf" target="_blank" rel="noopener noreferrer">
+            <ResumeButton
+              to={(contentful.fields.cv as any).fields.file.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Download CV
             </ResumeButton>
             <ThemeSwitcher onClick={toggleTheme}>Switch Theme</ThemeSwitcher>
@@ -66,7 +72,11 @@ const Navbar: FC<{ setTheme: (theme: DefaultTheme) => void }> = ({
         <MenuWrapper>
           <Container>
             <NavLinksVertical />
-            <ResumeButton to="cv.pdf" target="_blank" rel="noopener noreferrer">
+            <ResumeButton
+              to={(contentful.fields.cv as any).fields.file.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Download CV
             </ResumeButton>
             <ThemeSwitcher onClick={toggleTheme}>Switch Theme</ThemeSwitcher>
