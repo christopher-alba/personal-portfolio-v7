@@ -12,7 +12,6 @@ import {
 } from "./styled";
 import { Container } from "../Container";
 import { DefaultTheme, ThemeContext } from "styled-components";
-import themes from "../../themes/schema.json";
 import NavLinks from "./NavLinks";
 import NavLinksVertical from "./NavLinksVertical";
 import { Entry } from "contentful";
@@ -25,11 +24,17 @@ const Navbar: FC<{
   const theme = useContext(ThemeContext);
   const toggleTheme = () => {
     if (theme?.name === "light") {
-      localStorage.setItem("theme", JSON.stringify(themes.dark));
-      setTheme(themes.dark);
+      localStorage.setItem(
+        "theme",
+        JSON.stringify((contentful.fields.themes as DefaultTheme).dark)
+      );
+      setTheme((contentful.fields.themes as DefaultTheme).dark);
     } else {
-      localStorage.setItem("theme", JSON.stringify(themes.light));
-      setTheme(themes.light);
+      localStorage.setItem(
+        "theme",
+        JSON.stringify((contentful.fields.themes as DefaultTheme).light)
+      );
+      setTheme((contentful.fields.themes as DefaultTheme).light);
     }
   };
   const toggleMenu = () => {

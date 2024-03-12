@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import styled, { ThemeProvider } from "styled-components";
-import themes from "./themes/schema.json";
+import styled, { DefaultTheme, ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./themes/globalStyles";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -25,17 +24,14 @@ const VanishingArea = styled("div")`
 `;
 
 const App = () => {
+  const [contentful, setContentful] = useState<Entry>();
   const [theme, setTheme] = useState(
     localStorage.getItem("theme")?.length ?? -1 > 0
       ? JSON.parse(localStorage.getItem("theme") as string)
-      : themes.light
+      : (contentful?.fields.themes as DefaultTheme).light
   );
-  const [contentful, setContentful] = useState<Entry>();
 
   useEffect(() => {
-    if (!localStorage.getItem("theme")) {
-      localStorage.setItem("theme", JSON.stringify(themes.light));
-    }
     client
       .getEntry("65AeUYg4df2Hwani5B8h6g")
       .then((entry) => {
@@ -45,16 +41,28 @@ const App = () => {
       .catch(console.error);
   }, []);
 
-  if(!contentful) return;
+  useEffect(() => {
+    if (!localStorage.getItem("theme")) {
+      localStorage.setItem(
+        "theme",
+        JSON.stringify((contentful?.fields.themes as DefaultTheme).light)
+      );
+    }
+  }, [contentful]);
+
+  if (!contentful) return;
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme as DefaultTheme}>
       <GlobalStyles />
-      <Navbar setTheme={setTheme} contentful={contentful}/>
+      <Navbar setTheme={setTheme} contentful={contentful} />
       <Routes>
         <Route path="/" element={<About contentful={contentful} />} />
-        <Route path="/career" element={<Career contentful={contentful}/>} />
-        <Route path="/projects" element={<Projects contentful={contentful}/>} />
+        <Route path="/career" element={<Career contentful={contentful} />} />
+        <Route
+          path="/projects"
+          element={<Projects contentful={contentful} />}
+        />
         <Route path="/projects/:projectName" element={<Project />} />
       </Routes>
       <VanishingArea />
