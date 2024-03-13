@@ -63,7 +63,7 @@ const App = () => {
           path="/projects"
           element={<Projects contentful={contentful} />}
         />
-        <Route path="/projects/:projectName" element={<Project />} />
+        <Route path="/projects/:projectName" element={<Project contentful={contentful}/>} />
       </Routes>
       <VanishingArea />
       <Footer />

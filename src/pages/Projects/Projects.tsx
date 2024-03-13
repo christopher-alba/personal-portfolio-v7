@@ -2,10 +2,11 @@ import { FC, useEffect } from "react";
 import HeroArea from "../../components/HeroArea";
 import SubTitle from "../../components/SubTitle";
 import { Container } from "../../components/Container";
-import { Project, Type } from "./data";
+import { data, Project, Type } from "./data";
 import { Link } from "react-router-dom";
-import { Image, ImageDiv, ImagesWrapper, Overlay } from "./styled";
+import { Image, ImageDiv, ImageDivWide, ImagesWrapper, Overlay } from "./styled";
 import { Entry } from "contentful";
+import { StyledLink } from "../../components/HeroArea/styled";
 
 const Projects: FC<{ contentful?: Entry }> = (contentful) => {
   useEffect(() => {
@@ -45,6 +46,24 @@ const Projects: FC<{ contentful?: Entry }> = (contentful) => {
                 <Image src={x.imgSrc} />
               </ImageDiv>
             ))}
+        </ImagesWrapper>
+        <SubTitle
+          mainText="Previous Personal Websites"
+          description="Follow the journey of my personal portfolios"
+        />
+        <ImagesWrapper>
+          {data.map((x) => (
+            <ImageDivWide>
+              <StyledLink
+                href={x.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Overlay>{x.name}</Overlay>
+              </StyledLink>
+              <Image src={x.imageUrl} />
+            </ImageDivWide>
+          ))}
         </ImagesWrapper>
       </Container>
     </div>

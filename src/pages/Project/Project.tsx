@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Project as ProjectType, projects } from "../Projects/data";
+import { Project as ProjectType } from "../Projects/data";
 import { Container } from "../../components/Container";
 import {
   Anchor,
@@ -18,13 +18,16 @@ import {
   StyledRouterLink,
   TechPill,
 } from "./styled";
+import { Entry } from "contentful";
 
-const Project: FC = () => {
+const Project: FC<{ contentful?: Entry }> = (contentful) => {
   const [state, setState] = useState<ProjectType>();
   const location = useLocation();
   useEffect(() => {
     if (!location.state) {
-      var project = projects.filter((x) => {
+      var project = (
+        contentful?.contentful?.fields?.projects as ProjectType[]
+      ).filter((x) => {
         return (
           x.name.replaceAll(" ", "").toLowerCase() ===
           location.pathname.split("/")[2].replaceAll(" ", "").toLowerCase()
@@ -39,7 +42,6 @@ const Project: FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
-
   if (!state) {
     return (
       <MainBackgroundDiv>
@@ -51,8 +53,9 @@ const Project: FC = () => {
             </PageTitle>
 
             <PageSubTitle>
-              The project with the name{" "}
-              "{location.pathname.split("/")[2].replaceAll(" ", "")}" could not be found.
+              The project with the name "
+              {location.pathname.split("/")[2].replaceAll(" ", "")}" could not
+              be found.
             </PageSubTitle>
           </ContentWrapper>
         </Container>
@@ -71,7 +74,9 @@ const Project: FC = () => {
       <MainBackgroundDiv>
         <Container>
           <ContentWrapper>
-            <StyledRouterLink to="/projects">← Back to projects</StyledRouterLink>
+            <StyledRouterLink to="/projects">
+              ← Back to projects
+            </StyledRouterLink>
             <PageTitle>
               {state?.name}
               <PageTitlePeriod>.</PageTitlePeriod>

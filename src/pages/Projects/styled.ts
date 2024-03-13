@@ -16,8 +16,37 @@ export const ImageDiv = styled("div")`
   box-sizing: border-box;
   position: relative;
   text-align: center;
-  box-shadow: ${({ theme }) => theme.colors.secondary1 + "15"} 0px 13px 27px -5px,
-    ${({ theme }) => theme.colors.secondary1 + "15"} 0px 8px 16px -8px;
+  box-shadow: ${({ theme }) =>
+    theme.name === "light"
+      ? `${theme.colors.secondary1 + "15"} 0px 13px 27px -5px, ${
+          theme.colors.secondary1 + "15"
+        } 0px 8px 16px -8px`
+      : "none"};
+  border: ${({ theme }) =>
+    theme.name === "dark" ? "2px solid white" : "none"};
+  background: ${({ theme }) => theme.colors.primary1};
+`;
+
+export const ImageDivWide = styled("div")`
+  margin: 10px;
+  aspect-ratio: 2.5/1;
+  flex-grow: 1;
+  overflow: hidden;
+  width: 20%;
+  @media (max-width: 800px) {
+    width: 40%;
+  }
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  box-shadow: ${({ theme }) =>
+    theme.name === "light"
+      ? `${theme.colors.secondary1 + "15"} 0px 13px 27px -5px, ${
+          theme.colors.secondary1 + "15"
+        } 0px 8px 16px -8px`
+      : "none"};
+  border: ${({ theme }) =>
+    theme.name === "dark" ? "2px solid white" : "none"};
   background: ${({ theme }) => theme.colors.primary1};
 `;
 
