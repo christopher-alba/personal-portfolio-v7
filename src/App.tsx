@@ -48,6 +48,9 @@ const App = () => {
         "theme",
         JSON.stringify((contentful?.fields.themes as DefaultTheme).light)
       );
+      setTheme(
+        JSON.stringify((contentful?.fields.themes as DefaultTheme).light)
+      );
     }
   }, [contentful]);
 
