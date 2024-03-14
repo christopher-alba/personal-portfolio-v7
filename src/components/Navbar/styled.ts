@@ -104,3 +104,18 @@ export const MenuWrapper = styled("div")`
   color: ${({ theme }) => theme.colors.primary1};
   padding: 20px 0;
 `;
+
+export const ShowNavButton = styled("button")`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  color: ${({ theme }) => theme.colors.secondary1};
+  text-align: left;
+  padding-left: 30px;
+  padding-top: 30px;
+`;

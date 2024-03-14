@@ -7,6 +7,7 @@ import LinkedInIcon from "../../assets/linkedinIcon.svg?react";
 export const MainBackgroundDiv = styled("div")`
   background: ${({ theme }) => theme.colors.primary1};
   min-height: 70vh;
+  padding-top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;

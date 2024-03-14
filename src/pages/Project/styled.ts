@@ -10,6 +10,7 @@ export const MainBackgroundDiv = styled("div")`
   min-height: 70vh;
   display: flex;
   flex-direction: column;
+  padding-top: 150px;
   justify-content: center;
   overflow: hidden;
   position: relative;
