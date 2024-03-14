@@ -63,7 +63,7 @@ const App = () => {
         localStorage.getItem("theme") ?? "{}"
       ) as DefaultTheme | null;
 
-      if (localTheme) {
+      if (localTheme?.name) {
         //compare values with contentful theme
         console.log(localTheme);
 
