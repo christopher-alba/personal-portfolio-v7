@@ -28,7 +28,7 @@ const App = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem("theme")?.length ?? -1 > 0
       ? JSON.parse(localStorage.getItem("theme") as string)
-      : (contentful?.fields.themes as DefaultTheme).light
+      : (contentful?.fields.themes as DefaultTheme)?.light
   );
 
   useEffect(() => {
