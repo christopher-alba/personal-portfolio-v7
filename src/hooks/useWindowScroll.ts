@@ -5,7 +5,7 @@ export const useWindowScroll = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
   useEffect(() => {
     let lastScrollTop = document.documentElement.scrollTop;
-    const handleScroll = (e: any) => {
+    const handleScroll = () => {
       const scrollTop = document.documentElement.scrollTop;
       if (scrollTop > lastScrollTop) {
         setScrollDirection("down");
