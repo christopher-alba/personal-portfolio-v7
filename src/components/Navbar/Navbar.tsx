@@ -29,7 +29,10 @@ const Navbar: FC<{
 
   useEffect(() => {
     if (scrollDir === "down") {
-      if (displayNavbar === true) setDisplayNavbar(false);
+      if (displayNavbar === true) {
+        setDisplayNavbar(false);
+        setDisplayMenu(false);
+      }
     } else {
       if (displayNavbar === false) setDisplayNavbar(true);
     }
