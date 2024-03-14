@@ -42,7 +42,8 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (!localStorage.getItem("theme")) {
+    if (!localStorage.getItem("theme") && contentful !== undefined) {
+      console.log(contentful);
       localStorage.setItem(
         "theme",
         JSON.stringify((contentful?.fields.themes as DefaultTheme).light)
@@ -50,7 +51,7 @@ const App = () => {
     }
   }, [contentful]);
 
-  if (!contentful) return;
+  if (contentful === undefined || theme === undefined) return;
 
   return (
     <ThemeProvider theme={theme as DefaultTheme}>
@@ -63,7 +64,10 @@ const App = () => {
           path="/projects"
           element={<Projects contentful={contentful} />}
         />
-        <Route path="/projects/:projectName" element={<Project contentful={contentful}/>} />
+        <Route
+          path="/projects/:projectName"
+          element={<Project contentful={contentful} />}
+        />
       </Routes>
       <VanishingArea />
       <Footer />
