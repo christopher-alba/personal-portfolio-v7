@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import Project from "./pages/Project/Project";
 import { client } from "./main";
 import { Entry } from "contentful";
+import "./app.css";
 
 const VanishingArea = styled("div")`
   height: 50px;
@@ -92,7 +93,33 @@ const App = () => {
     }
   }, [contentful]);
 
-  if (contentful === undefined || theme === undefined) return;
+  if (contentful === undefined || theme === undefined)
+    return (
+      <div className="mainWrapper">
+        <div className="lds-grid">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <h3 className="loadingText">Fetching content from Contentful.</h3>
+        <p className="loadingTextBottom">
+          Made by{" "}
+          <a
+            href="https://www.linkedin.com/in/christopher-alba/"
+            target="_blank"
+            className="link"
+          >
+            Christopher Sy Alba.
+          </a>
+        </p>
+      </div>
+    );
 
   return (
     <ThemeProvider theme={theme as DefaultTheme}>
