@@ -41,14 +41,54 @@ const App = () => {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    if (!localStorage.getItem("theme") && contentful !== undefined) {
-      console.log(contentful);
+  const updateTheme = (themeName: string) => {
+    if (themeName === "light") {
       localStorage.setItem(
         "theme",
-        JSON.stringify((contentful?.fields.themes as DefaultTheme).light)
+        JSON.stringify((contentful?.fields.themes as any).light)
       );
-      setTheme((contentful?.fields.themes as DefaultTheme).light);
+      setTheme((contentful?.fields.themes as any).light);
+    } else {
+      localStorage.setItem(
+        "theme",
+        JSON.stringify((contentful?.fields.themes as any).dark)
+      );
+      setTheme((contentful?.fields.themes as any).dark);
+    }
+  };
+
+  useEffect(() => {
+    if (contentful !== undefined) {
+      const localTheme: DefaultTheme | null = JSON.parse(
+        localStorage.getItem("theme") ?? "{}"
+      ) as DefaultTheme | null;
+
+      if (localTheme) {
+        //compare values with contentful theme
+        console.log(localTheme);
+
+        if (localTheme.name === "light") {
+          if (
+            JSON.stringify((contentful?.fields.themes as any).light) !==
+            JSON.stringify(localTheme)
+          ) {
+            updateTheme("light");
+          }
+        } else if (localTheme.name === "dark") {
+          if (
+            JSON.stringify((contentful?.fields.themes as any).dark) !==
+            JSON.stringify(localTheme)
+          ) {
+            updateTheme("dark");
+          }
+        }
+      } else {
+        localStorage.setItem(
+          "theme",
+          JSON.stringify((contentful?.fields.themes as any).light)
+        );
+        setTheme((contentful?.fields.themes as any).light);
+      }
     }
   }, [contentful]);
 
