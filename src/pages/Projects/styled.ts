@@ -22,9 +22,8 @@ export const ImageDiv = styled("div")`
           theme.colors.secondary1 + "15"
         } 0px 8px 16px -8px`
       : "none"};
-  border: ${({ theme }) =>
-    theme.name === "dark" ? "2px solid white" : "none"};
   background: ${({ theme }) => theme.colors.primary1};
+  padding: 5px;
 `;
 
 export const ImageDivWide = styled("div")`
@@ -45,9 +44,8 @@ export const ImageDivWide = styled("div")`
           theme.colors.secondary1 + "15"
         } 0px 8px 16px -8px`
       : "none"};
-  border: ${({ theme }) =>
-    theme.name === "dark" ? "2px solid white" : "none"};
   background: ${({ theme }) => theme.colors.primary1};
+  padding: 5px;
 `;
 
 export const Image = styled("img")`
